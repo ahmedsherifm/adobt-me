@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { render } from "react-dom";
 import { Link, Router } from "@reach/router";
+import { Provider } from "react-redux";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
-import ThemeContext from "./ThemeContext";
+import store from "./store";
 
 const App = () => {
-  const themeHook = useState("peru");
-
   return (
-    <ThemeContext.Provider value={themeHook}>
+    <Provider store={store}>
       <div>
         <header>
           <Link to="/">Adobt Me!</Link>
@@ -19,7 +18,7 @@ const App = () => {
           <Details path="/details/:id" />
         </Router>
       </div>
-    </ThemeContext.Provider>
+    </Provider>
   );
 };
 
